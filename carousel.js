@@ -27,6 +27,11 @@ $.fn.carousel = function(options)
     var firstSlide = 0;
     var activeSlide = firstSlide;                    
     var lastSlide = (settings.numOfSlides - 1);
+    var adjustRightControl = function(){
+        $rightControl.css({
+            "left": ($(window).width() - 30) + "px"
+        });
+    }; 
     var positionSlides = function(){
         i = 0;
         do
@@ -163,6 +168,7 @@ $.fn.carousel = function(options)
     var startAnimation = function(){
         animateSlideToRight();
     };
+    adjustRightControl();
     positionSlides();
     timeoutId = setInterval(startAnimation, settings.interval);
 };
